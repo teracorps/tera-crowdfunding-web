@@ -3,6 +3,7 @@
 	import CategoryPills from '$lib/components/CategoryPills.svelte';
 	import CampaignGrid from '$lib/components/CampaignGrid.svelte';
 	import StatsSection from '$lib/components/StatsSection.svelte';
+	import DoaSection from '$lib/components/DoaSection.svelte';
 	import { getCampaigns, getCategories, getStats } from '$lib/api';
 	import { onMount } from 'svelte';
 
@@ -87,7 +88,10 @@
 		subtitle="Galang dana pilihan kami yang layak didukung"
 		seeAllLink="/campaigns"
 	/>
-{/if}
+	{/if}
+
+<!-- Doa-doa #OrangBaik -->
+<DoaSection />
 
 <!-- Stats -->
 <StatsSection {stats} />

@@ -1,0 +1,95 @@
+export const userMenuItems = {
+	loggedIn: [
+		{
+			id: 'wallet',
+			icon: 'wallet',
+			label: 'Kantong Donasimu',
+			badge: 'Rp 586',
+			href: '/user/wallet',
+		},
+		{
+			id: 'reminder',
+			icon: 'reminder',
+			label: 'Pengingat donasi',
+			href: '/user/reminders',
+		},
+		{
+			id: 'autodonasi',
+			icon: 'auto',
+			label: 'Donasi Otomatis',
+			description: 'Dukung galang dana pilihanmu tanpa putus',
+			badge: 'BARU',
+			badgeStyle: 'primary',
+			href: '/user/auto-donation',
+		},
+		{
+			id: 'zakat',
+			icon: 'zakat',
+			label: 'Saya menunaikan zakat',
+			href: '/user/zakat',
+		},
+		{
+			id: 'donations',
+			icon: 'donations',
+			label: 'Donasi Saya',
+			href: '/user/donations',
+		},
+		{
+			id: 'settings',
+			icon: 'settings',
+			label: 'Pengaturan',
+			href: '/user/settings',
+		},
+		{
+			id: 'help',
+			icon: 'help',
+			label: 'Bantuan',
+			href: '/help',
+		},
+		{
+			id: 'about',
+			icon: 'info',
+			label: 'Tentang Terabisa',
+			href: '/about',
+		},
+		{
+			id: 'terms',
+			icon: 'document',
+			label: 'Syarat & Ketentuan',
+			href: '/terms',
+		},
+	],
+	loggedOut: [
+		{
+			id: 'help',
+			icon: 'help',
+			label: 'Bantuan',
+			href: '/help',
+		},
+		{
+			id: 'about',
+			icon: 'info',
+			label: 'Tentang Terabisa',
+			href: '/about',
+		},
+		{
+			id: 'terms',
+			icon: 'document',
+			label: 'Syarat & Ketentuan',
+			href: '/terms',
+		},
+		{
+			id: 'accountability',
+			icon: 'audit',
+			label: 'Akuntabilitas & Transparansi',
+			href: '/accountability',
+		},
+		{
+			id: 'cache',
+			icon: 'trash',
+			label: 'Hapus Cache',
+			description: 'Solusi cepat untuk atasi masalah website',
+			href: '#',
+		},
+	],
+} as const;

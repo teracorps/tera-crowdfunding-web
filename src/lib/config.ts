@@ -1,8 +1,9 @@
+import { PUBLIC_SUPABASE_URL, PUBLIC_SUBOMAIN } from '$env/static/public';
+
 export const config = {
 	api: {
-		// In production, this is proxied via Vite's proxy or SvelteKit hooks
 		baseUrl: '/api',
-		publicUrl: 'https://tera-platform--terawithapi.asia-southeast1.hosted.app/api',
+		publicUrl: 'https://terabisnis.id/api',
 	},
 	site: {
 		name: 'Terabisa',
@@ -20,4 +21,30 @@ export const config = {
 		secondary: '#FF784B',
 		accent: '#FFD166',
 	},
+	tenant: {
+		/** The main subdomain for this platform (e.g., "crowdfunding") */
+		mainSubdomain: PUBLIC_SUBOMAIN || 'crowdfunding',
+		/** Base domain without subdomain (e.g., "tera-platform.my.id") */
+		baseDomain: PUBLIC_SUPABASE_URL
+			? PUBLIC_SUPABASE_URL.replace('https://', '').split('.')[0] === 'myxferhvmxgiimaoldnc'
+				? 'tera-platform.my.id'
+				: 'tera-platform.my.id'
+			: 'tera-platform.my.id',
+	},
 } as const;
+
+/**
+ * Get the full host for a tenant subdomain.
+ * e.g., getTenantHost('yayasan-sehat') => 'yayasan-sehat.crowdfunding.tera-platform.my.id'
+ */
+export function getTenantHost(subdomain: string): string {
+	if (!subdomain) return config.site.url;
+	return `https://${subdomain}.${config.tenant.mainSubdomain}.${config.tenant.baseDomain}`;
+}
+
+/**
+ * Check if the current request has a tenant context.
+ */
+export function hasTenant(tenant: any): tenant is NonNullable<typeof tenant> {
+	return tenant !== null && typeof tenant.id === 'string';
+}

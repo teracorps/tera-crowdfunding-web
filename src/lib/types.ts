@@ -89,3 +89,50 @@ export interface FundingStats {
 	total_raised: number;
 	total_donors: number;
 }
+
+// --- Multi-tenant Types ---
+
+export interface TenantBranding {
+	platformName: string;
+	tagline: string;
+	primaryColor: string;
+	secondaryColor: string;
+	accentColor: string;
+	textPrimaryColor: string;
+	textSecondaryColor: string;
+	backgroundColor: string;
+	surfaceColor: string;
+	logoUrl: string | null;
+	faviconUrl: string | null;
+	ogImageUrl: string | null;
+	fontFamily: string;
+	fontHeading: string;
+	footerText: string | null;
+	footerLinks: { label: string; url: string }[];
+	socialLinks: { platform: string; url: string }[];
+}
+
+export interface TenantSubscription {
+	planId: string;
+	planCode: string;
+	planName: string;
+	status: string;
+}
+
+export interface TenantInfo {
+	id: string;
+	name: string;
+	slug: string;
+	subdomain: string | null;
+	description: string | null;
+	branding: TenantBranding | null;
+	subscription: TenantSubscription | null;
+	entitlements: Set<string>;
+}
+
+export type FeatureKey =
+	| 'crowdfunding'
+	| 'crowdfunding.branding'
+	| 'crowdfunding.custom_domain'
+	| 'crowdfunding.unlimited'
+	| 'crowdfunding.api';
