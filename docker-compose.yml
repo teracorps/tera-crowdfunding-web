@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    image: ghcr.io/teracorps/tera-crowdfunding-web:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PUBLIC_SUPABASE_URL
+      - PUBLIC_SUPABASE_ANON_KEY
+      - SUPABASE_SERVICE_KEY
+      - RESEND_API_KEY
+      - MIDTRANS_SERVER_KEY
+      - MIDTRANS_CLIENT_KEY
+      - PUBLIC_MIDTRANS_CLIENT_KEY
+      - PUBLIC_SITE_URL
+      - PUBLIC_APP_URL
+      - SECRET_EMAIL_FROM
+    restart: unless-stopped
