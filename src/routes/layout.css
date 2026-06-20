@@ -1,0 +1,203 @@
+@import 'tailwindcss';
+
+:root {
+	--color-kitabisa: #1a73e8;
+	--color-kitabisa-dark: #1557b0;
+	--color-kitabisa-light: #e8f0fe;
+	--color-orange: #ff7043;
+	--color-orange-light: #fff0ea;
+	--color-yellow: #ffd166;
+	--color-yellow-light: #fff9e8;
+	--color-red: #ef4444;
+	--color-red-light: #fef2f2;
+	--color-bg-section: #f5f7fa;
+	--color-text-primary: #1a1a2e;
+	--color-text-secondary: #64748b;
+	--color-text-muted: #94a3b8;
+}
+
+/* Kitabisa-style base */
+body {
+	font-family: 'Inter', system-ui, -apple-system, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #ffffff;
+	color: var(--color-text-primary);
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: #cbd5e1;
+	border-radius: 3px;
+}
+
+/* Card hover - Kitabisa style */
+.card-hover {
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Kitabisa blue header */
+.kitabisa-header {
+	background: #1a73e8;
+}
+
+/* Hero gradient */
+.hero-gradient {
+	background: linear-gradient(135deg, #1a73e8 0%, #1557b0 50%, #0d47a1 100%);
+}
+
+/* Glass effect for navbar */
+.glass {
+	background: rgba(255, 255, 255, 0.95);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+}
+
+/* Progress bar - Kitabisa blue */
+.progress-bar {
+	height: 8px;
+	border-radius: 999px;
+	background: #e5e7eb;
+	overflow: hidden;
+}
+.progress-bar-fill {
+	height: 100%;
+	border-radius: 999px;
+	background: linear-gradient(90deg, #1a73e8, #4285f4);
+	transition: width 0.6s ease;
+}
+.progress-bar-fill.green {
+	background: linear-gradient(90deg, #10b981, #34d399);
+}
+.progress-bar-fill.orange {
+	background: linear-gradient(90deg, #ff7043, #ff9800);
+}
+
+/* Campaign image overlay */
+.campaign-image-overlay {
+	position: relative;
+	overflow: hidden;
+}
+.campaign-image-overlay::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+}
+
+/* Urgent pulse */
+@keyframes urgent-pulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.7; }
+}
+.urgent-pulse {
+	animation: urgent-pulse 2s infinite;
+}
+
+/* Category pill */
+.category-pill {
+	@apply inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer;
+	background: #f3f4f6;
+	color: #374151;
+	border: 2px solid transparent;
+}
+.category-pill:hover {
+	background: var(--color-kitabisa-light);
+	color: var(--color-kitabisa);
+	border-color: var(--color-kitabisa);
+}
+.category-pill.active {
+	background: var(--color-kitabisa);
+	color: white;
+	border-color: var(--color-kitabisa);
+}
+
+/* Donate button */
+.donate-btn {
+	background: linear-gradient(135deg, #ff7043, #f4511e);
+	transition: all 0.2s ease;
+	color: white;
+	font-weight: 600;
+	padding: 0.625rem 1.5rem;
+	border-radius: 999px;
+	border: none;
+	cursor: pointer;
+}
+.donate-btn:hover {
+	background: linear-gradient(135deg, #f4511e, #e64a19);
+	transform: scale(1.02);
+	box-shadow: 0 4px 16px rgba(244, 81, 30, 0.35);
+}
+
+/* Badge styles */
+.badge-verified {
+	@apply inline-flex items-center justify-center w-4 h-4 rounded-full;
+	background: #1a73e8;
+	color: white;
+	font-size: 8px;
+}
+.badge-org {
+	@apply inline-flex items-center px-1.5 py-0.5 rounded text-xs font-bold;
+	background: #1a73e8;
+	color: white;
+	font-size: 10px;
+}
+.badge-rekomendasi {
+	@apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold;
+	background: #ff7043;
+	color: white;
+}
+.badge-urgent {
+	@apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold;
+	background: #ef4444;
+	color: white;
+}
+
+/* Stat number gradient */
+.stat-number {
+	font-size: 2.25rem;
+	font-weight: 800;
+	background: linear-gradient(135deg, #1a73e8, #4285f4);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* Horizontal scroll container */
+.scroll-container {
+	display: flex;
+	gap: 1rem;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	-webkit-overflow-scrolling: touch;
+	padding-bottom: 0.5rem;
+}
+.scroll-container::-webkit-scrollbar {
+	height: 4px;
+}
+.scroll-container > * {
+	scroll-snap-align: start;
+	flex-shrink: 0;
+}
+
+/* Section spacing */
+.section-padding {
+	@apply py-12 px-4;
+}
+
+/* Footer */
+.footer-bg {
+	background: #1a1a2e;
+	color: #e2e8f0;
+}
