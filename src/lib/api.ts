@@ -7,6 +7,7 @@ import type {
 	DonationRequest,
 	DonationResponse,
 	FundingStats,
+	DonationHistoryItem,
 } from '$lib/types';
 
 const API = config.api.baseUrl;
@@ -121,6 +122,24 @@ export async function submitDonation(data: DonationRequest): Promise<DonationRes
 		body: JSON.stringify(data),
 	});
 	return response.data;
+}
+
+export async function getDonationHistory(email: string): Promise<DonationHistoryItem[]> {
+	try {
+		const response = await fetchApi<ApiResponse<DonationHistoryItem[]>>(`/donations/history?email=${encodeURIComponent(email)}`);
+		return response.data || [];
+	} catch {
+		return [];
+	}
+}
+
+export async function getDonationStatus(id: string): Promise<DonationHistoryItem | null> {
+	try {
+		const response = await fetchApi<ApiResponse<DonationHistoryItem>>(`/donations/${id}`);
+		return response.data;
+	} catch {
+		return null;
+	}
 }
 
 export { formatRupiah, formatNumber, getPercentage };

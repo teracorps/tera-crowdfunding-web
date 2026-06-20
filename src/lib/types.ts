@@ -65,8 +65,28 @@ export interface DonationRequest {
 
 export interface DonationResponse {
 	id: string;
+	donation_number?: string;
+	snap_token?: string | null;
 	redirect_url: string;
 	status: string;
+	warning?: string;
+}
+
+export interface DonationHistoryItem {
+	id: string;
+	donation_number: string;
+	amount: number;
+	date: string;
+	payment_status: string;
+	payment_method: string;
+	is_anonymous: boolean;
+	message?: string;
+	campaign: {
+		id: string;
+		title: string;
+		slug: string;
+		cover_image: string;
+	} | null;
 }
 
 // --- API Response Types ---

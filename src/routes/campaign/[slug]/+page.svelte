@@ -58,12 +58,23 @@
 				phone: donateForm.phone,
 				message: donateForm.message,
 				is_anonymous: donateForm.is_anonymous,
-				payment_method: 'manual_transfer',
+				payment_method: 'snap',
 			};
-			await submitDonation(request);
-			donateStatus = 'success';
-			donateMessage = 'Donasi berhasil! Silakan lanjutkan pembayaran.';
-			showDonate = false;
+			const result = await submitDonation(request);
+			if (result.snap_token) {
+				// Redirect to Midtrans Snap
+				window.open(result.redirect_url, '_blank');
+				donateStatus = 'success';
+				donateMessage = 'Pembayaran berhasil dibuat! Silakan selesaikan pembayaran di halaman Midtrans.';
+				showDonate = false;
+			} else if (result.redirect_url) {
+				// Fallback to manual redirect
+				window.location.href = result.redirect_url;
+			} else {
+				donateStatus = 'success';
+				donateMessage = 'Donasi berhasil dicatat! Silakan lanjutkan pembayaran.';
+				showDonate = false;
+			}
 		} catch (e: any) {
 			donateStatus = 'error';
 			donateMessage = e.message || 'Gagal memproses donasi';

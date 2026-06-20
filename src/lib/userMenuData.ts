@@ -1,6 +1,14 @@
 export const userMenuItems = {
 	loggedIn: [
 		{
+			id: 'admin',
+			icon: 'settings',
+			label: 'Admin Dashboard',
+			badge: 'PANEL',
+			badgeStyle: 'primary',
+			href: '/admin',
+		},
+		{
 			id: 'wallet',
 			icon: 'wallet',
 			label: 'Kantong Donasimu',
