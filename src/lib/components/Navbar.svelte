@@ -53,6 +53,17 @@
 
 			<!-- Desktop Nav -->
 			<div class="hidden md:flex items-center gap-4">
+				<!-- Cross-platform SSO link -->
+				<a
+					href={user ? 'https://app.tera-platform.my.id' : 'https://app.tera-platform.my.id/auth/login?redirect=crowdfunding'}
+					target="_blank"
+					rel="noopener"
+					class="text-xs font-medium px-3 py-1.5 rounded-full transition-all border {isScrolled ? 'border-gray-300' : 'border-white/40'}"
+					style="color: {isScrolled ? 'var(--color-text-secondary, #6B7280)' : 'rgba(255,255,255,0.85)'};"
+				>
+					Platform Tera →
+				</a>
+
 				<div class="relative">
 					<input
 						type="text"
@@ -135,6 +146,15 @@
 					</a>
 					<a href="/tentang" class="text-sm font-medium px-3 py-2 rounded-lg hover:bg-gray-100" style="color: var(--color-text-primary, #374151);">
 						Tentang
+					</a>
+					<a
+						href="https://app.tera-platform.my.id"
+						target="_blank"
+						rel="noopener"
+						class="text-sm font-medium px-3 py-2 rounded-lg hover:bg-gray-100 flex items-center gap-2"
+						style="color: var(--color-text-secondary, #6B7280);"
+					>
+						Platform Tera →
 					</a>
 					<a
 						href="/campaign/create"

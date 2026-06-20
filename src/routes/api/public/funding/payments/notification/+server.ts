@@ -1,6 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestEvent } from '@sveltejs/kit';
 import { mapMidtransStatus } from '$lib/payment';
+import { sendDonationSettlementEmail } from '$lib/notifications';
 
 /**
  * POST /api/public/funding/payments/notification
@@ -50,7 +51,7 @@ export async function POST({ request, locals }: RequestEvent) {
 				const { data: campaign } = await sb
 					.schema('business_funding')
 					.from('campaigns')
-					.select('raised_amount, donor_count')
+					.select('raised_amount, donor_count, title, slug')
 					.eq('id', donation.campaign_id)
 					.maybeSingle();
 
@@ -64,6 +65,26 @@ export async function POST({ request, locals }: RequestEvent) {
 							donor_count: (campaign.donor_count || 0) + 1,
 						})
 						.eq('id', donation.campaign_id);
+
+					// Send settlement email (fire & forget)
+					const { data: donor } = await sb
+						.schema('business_funding')
+						.from('donations')
+						.select('donor_name, donor_email')
+						.eq('id', donation.id)
+						.maybeSingle();
+
+					if (donor?.donor_email) {
+						sendDonationSettlementEmail(sb, {
+							to: donor.donor_email,
+							donorName: donor.donor_name || 'Donatur',
+							amount: donation.amount,
+							donationNumber: order_id,
+							campaignTitle: campaign.title || 'Campaign',
+							campaignSlug: campaign.slug || donation.campaign_id,
+							date: new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }),
+						}).catch((e: unknown) => console.error('[Webhook] Email error:', e));
+					}
 				}
 			} catch (err) {
 				console.error('[Payment Webhook] Campaign update error:', err);

@@ -1,6 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestEvent } from '@sveltejs/kit';
 import { createSnapTransaction } from '$lib/payment';
+import { sendDonationReceivedEmail } from '$lib/notifications';
 
 /**
  * POST /api/public/funding/donations
@@ -110,6 +111,17 @@ export async function POST({ request, locals }: RequestEvent) {
 					payment_redirect_url: snapResult.redirect_url,
 				})
 				.eq('id', donation.id);
+
+			// Send email notification (fire & forget)
+			sendDonationReceivedEmail(sb, {
+				to: email,
+				donorName: name,
+				amount,
+				donationNumber,
+				campaignTitle: campaign.title,
+				campaignSlug: campaign.id, // will be resolved later
+				date: new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }),
+			}).catch((e: unknown) => console.error('[Donation] Email error:', e));
 
 			return json({
 				success: true,

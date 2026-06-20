@@ -142,4 +142,9 @@ export async function getDonationStatus(id: string): Promise<DonationHistoryItem
 	}
 }
 
+export async function getDonationInvoice(id: string): Promise<DonationHistoryItem | null> {
+	// Uses the same donation status endpoint to get invoice data
+	return getDonationStatus(id);
+}
+
 export { formatRupiah, formatNumber, getPercentage };

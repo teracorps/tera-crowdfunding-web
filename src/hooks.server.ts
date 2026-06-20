@@ -10,10 +10,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 		cookies: {
 			get: (key) => event.cookies.get(key),
 			set: (key, value, options) => {
-				event.cookies.set(key, value, { ...options, path: '/' });
+				event.cookies.set(key, value, { ...options, path: '/', domain: '.tera-platform.my.id' });
 			},
 			remove: (key, options) => {
-				event.cookies.set(key, '', { ...options, path: '/' });
+				event.cookies.set(key, '', { ...options, path: '/', domain: '.tera-platform.my.id' });
 			},
 		},
 	});

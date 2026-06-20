@@ -5,8 +5,10 @@
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import StatusAlert from '$lib/components/StatusAlert.svelte';
 
-	let campaign = $state<Campaign | null>(null);
-	let loading = $state(true);
+	let { data } = $props();
+
+	let campaign = $state<Campaign | null>(data.campaign || null);
+	let loading = $state(data.campaign ? false : true);
 	let error = $state('');
 
 	// Donate form
@@ -25,8 +27,11 @@
 	const presetAmounts = [10000, 25000, 50000, 100000, 250000, 500000];
 
 	$effect(() => {
-		const slug = page.params.slug;
-		if (slug) loadCampaign(slug);
+		// Only fetch client-side if no server data was loaded
+		if (!campaign) {
+			const slug = page.params.slug;
+			if (slug) loadCampaign(slug);
+		}
 	});
 
 	async function loadCampaign(slug: string) {
@@ -62,11 +67,32 @@
 			};
 			const result = await submitDonation(request);
 			if (result.snap_token) {
-				// Redirect to Midtrans Snap
-				window.open(result.redirect_url, '_blank');
-				donateStatus = 'success';
-				donateMessage = 'Pembayaran berhasil dibuat! Silakan selesaikan pembayaran di halaman Midtrans.';
-				showDonate = false;
+				// Open Midtrans Snap popup
+				if (typeof window.snap !== 'undefined') {
+					let donationId = result.id;
+					window.snap.pay(result.snap_token, {
+						onSuccess: function () {
+							window.location.href = `/donasi/selesai/${donationId}?status=success`;
+						},
+						onPending: function () {
+							window.location.href = `/donasi/selesai/${donationId}?status=pending`;
+						},
+						onError: function () {
+							window.location.href = `/donasi/selesai/${donationId}?status=error`;
+						},
+						onClose: function () {
+							// User closed popup, stay on page
+							donateStatus = 'idle';
+							donateMessage = '';
+						},
+					});
+				} else {
+					// Fallback: open in new tab
+					window.open(result.redirect_url, '_blank');
+					donateStatus = 'success';
+					donateMessage = 'Pembayaran berhasil dibuat! Silakan selesaikan pembayaran.';
+					showDonate = false;
+				}
 			} else if (result.redirect_url) {
 				// Fallback to manual redirect
 				window.location.href = result.redirect_url;
@@ -83,7 +109,21 @@
 </script>
 
 <svelte:head>
-	<title>{campaign?.title || 'Loading...'} - Terabisa</title>
+	<title>{campaign?.title ? `${campaign.title} - Terabisa` : 'Loading... - Terabisa'}</title>
+	{#if campaign}
+		<meta name="description" content={(campaign.description || campaign.title || '').slice(0, 160)} />
+		<!-- Open Graph -->
+		<meta property="og:title" content="{campaign.title} - Terabisa" />
+		<meta property="og:description" content={(campaign.description || campaign.title || '').slice(0, 160)} />
+		<meta property="og:image" content={campaign.cover_image || ''} />
+		<meta property="og:url" content={page.url.href} />
+		<meta property="og:type" content="website" />
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="{campaign.title} - Terabisa" />
+		<meta name="twitter:description" content={(campaign.description || campaign.title || '').slice(0, 160)} />
+		<meta name="twitter:image" content={campaign.cover_image || ''} />
+	{/if}
 </svelte:head>
 
 {#if loading}

@@ -51,6 +51,11 @@
 		<meta property="og:image" content={branding.ogImageUrl} />
 		<meta name="twitter:image" content={branding.ogImageUrl} />
 	{/if}
+	<link rel="manifest" href="/manifest.json" />
+	<meta name="theme-color" content="#1a73e8" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+	<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-your_client_key_here"></script>
 </svelte:head>
 
 <div

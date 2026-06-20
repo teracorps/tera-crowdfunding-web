@@ -8,6 +8,10 @@
 	let recentCampaigns = $state<CampaignListItem[]>([]);
 	let loading = $state(true);
 
+	// Export CSV filter states
+	let fromDate = $state('');
+	let toDate = $state('');
+
 	onMount(async () => {
 		try {
 			const [statsData, campaignsData] = await Promise.all([
@@ -20,6 +24,14 @@
 			loading = false;
 		}
 	});
+
+	function buildExportUrl(): string {
+		const params = new URLSearchParams();
+		if (fromDate) params.set('from_date', fromDate);
+		if (toDate) params.set('to_date', toDate);
+		const qs = params.toString();
+		return `/api/public/funding/donations/export${qs ? '?' + qs : ''}`;
+	}
 </script>
 
 <div>
@@ -48,6 +60,48 @@
 			<p class="text-xl sm:text-2xl font-bold text-gray-900">
 				{#if loading}<span class="inline-block w-16 h-5 bg-gray-100 rounded animate-pulse"></span>{:else}{stats?.total_donors ?? '-'}{/if}
 			</p>
+		</div>
+	</div>
+
+	<!-- Export CSV Section -->
+	<div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 sm:p-6 mb-8">
+		<div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+			<div class="flex-1">
+				<h2 class="text-sm font-bold text-gray-900">Ekspor Data Donasi</h2>
+				<p class="text-xs text-gray-500 mt-0.5">Download data donasi dalam format CSV</p>
+			</div>
+			<div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full sm:w-auto">
+				<div class="flex items-center gap-2">
+					<div>
+						<label for="from-date" class="block text-[10px] font-medium text-gray-500 mb-0.5">Dari Tanggal</label>
+						<input
+							id="from-date"
+							type="date"
+							bind:value={fromDate}
+							class="text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#1a73e8] focus:border-[#1a73e8]"
+						/>
+					</div>
+					<span class="text-gray-400 mt-5">—</span>
+					<div>
+						<label for="to-date" class="block text-[10px] font-medium text-gray-500 mb-0.5">Sampai Tanggal</label>
+						<input
+							id="to-date"
+							type="date"
+							bind:value={toDate}
+							class="text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#1a73e8] focus:border-[#1a73e8]"
+						/>
+					</div>
+				</div>
+				<a
+					href={buildExportUrl()}
+					class="inline-flex items-center gap-1.5 px-4 py-2 bg-[#14B88C] text-white text-xs font-semibold rounded-lg hover:bg-[#10a07a] transition-colors whitespace-nowrap"
+				>
+					<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+					</svg>
+					Ekspor CSV
+				</a>
+			</div>
 		</div>
 	</div>
 
