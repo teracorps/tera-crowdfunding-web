@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import type { User } from '@supabase/supabase-js';
 	import type { TenantBranding } from '$lib/types';
 
@@ -18,12 +19,21 @@
 	const logoUrl = $derived(branding?.logoUrl ?? null);
 	const initial = $derived(platformName.charAt(0).toUpperCase());
 	const primaryColor = $derived(branding?.primaryColor ?? '#14B88C');
+
+	// Pages that have a dark hero/gradient at top — navbar stays transparent with white text
+	const hasDarkHero = $derived(
+		page.url.pathname === '/' ||
+		page.url.pathname.startsWith('/campaign/create')
+	);
+
+	// At top of dark-hero pages: white text on transparent. Otherwise: dark text on white bg.
+	const useSolid = $derived(isScrolled || !hasDarkHero);
 </script>
 
 <nav
 	class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-	class:shadow-sm={isScrolled}
-	style={isScrolled
+	class:shadow-sm={useSolid}
+	style={useSolid
 		? 'background-color: var(--color-surface, #ffffff);'
 		: 'background: transparent;'}
 >
@@ -41,14 +51,14 @@
 						<span class="text-white font-bold text-sm">{initial}</span>
 					</div>
 				{/if}
-				<span
-					class="font-bold text-xl transition-colors"
-					style="color: {isScrolled
-						? 'var(--color-text-primary, #111827)'
-						: '#ffffff'};"
-				>
-					{platformName}
-				</span>
+			<span
+				class="font-bold text-xl transition-colors hidden sm:inline"
+				style="color: {useSolid
+					? 'var(--color-text-primary, #111827)'
+					: '#ffffff'};"
+			>
+				{platformName}
+			</span>
 			</a>
 
 			<!-- Desktop Nav -->
@@ -58,8 +68,8 @@
 					href={user ? 'https://app.tera-platform.my.id' : 'https://app.tera-platform.my.id/auth/login?redirect=crowdfunding'}
 					target="_blank"
 					rel="noopener"
-					class="text-xs font-medium px-3 py-1.5 rounded-full transition-all border {isScrolled ? 'border-gray-300' : 'border-white/40'}"
-					style="color: {isScrolled ? 'var(--color-text-secondary, #6B7280)' : 'rgba(255,255,255,0.85)'};"
+					class="text-xs font-medium px-3 py-1.5 rounded-full transition-all border {useSolid ? 'border-gray-300' : 'border-white/40'}"
+					style="color: {useSolid ? 'var(--color-text-secondary, #6B7280)' : 'rgba(255,255,255,0.85)'};"
 				>
 					Platform Tera →
 				</a>
@@ -77,17 +87,17 @@
 					</svg>
 				</div>
 
-				<a href="/campaigns" class="text-sm font-medium transition-colors" style="color: {isScrolled ? 'var(--color-text-primary, #374151)' : '#ffffff'};">
+				<a href="/campaigns" class="text-sm font-medium transition-colors" style="color: {useSolid ? 'var(--color-text-primary, #374151)' : '#ffffff'};">
 					Jelajahi
 				</a>
-				<a href="/tentang" class="text-sm font-medium transition-colors" style="color: {isScrolled ? 'var(--color-text-primary, #374151)' : '#ffffff'};">
+				<a href="/tentang" class="text-sm font-medium transition-colors" style="color: {useSolid ? 'var(--color-text-primary, #374151)' : '#ffffff'};">
 					Tentang
 				</a>
 
 				<a
 					href="/campaign/create"
 					class="text-sm font-medium !px-5 !py-2 rounded-full text-white border-2 border-white/80 hover:bg-white/15 transition-all"
-					style="background-color: {primaryColor}; border-color: {isScrolled ? primaryColor : 'rgba(255,255,255,0.8)'};"
+					style="background-color: {primaryColor}; border-color: {useSolid ? primaryColor : 'rgba(255,255,255,0.8)'};"
 				>
 					Mulai Galang Dana
 				</a>
@@ -95,7 +105,7 @@
 				<a
 					href={user ? '/user' : '/auth/masuk'}
 					class="w-9 h-9 rounded-full flex items-center justify-center transition-colors"
-					style={isScrolled
+					style={useSolid
 						? 'background-color: var(--color-surface, #f3f4f6); color: var(--color-text-primary, #4b5563);'
 						: 'background-color: rgba(255,255,255,0.15); color: #ffffff;'}
 				>
@@ -112,7 +122,7 @@
 			<!-- Mobile menu button -->
 			<button
 				class="md:hidden p-2 rounded-lg transition-colors"
-				style="color: {isScrolled ? 'var(--color-text-primary, #374151)' : '#ffffff'};"
+				style="color: {useSolid ? 'var(--color-text-primary, #374151)' : '#ffffff'};"
 				onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
 			>
 				<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

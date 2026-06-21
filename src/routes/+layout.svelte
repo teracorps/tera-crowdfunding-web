@@ -10,15 +10,12 @@
 	let isScrolled = $state(false);
 
 	$effect(() => {
-		window.addEventListener('scroll', () => {
+		const handleScroll = () => {
 			isScrolled = window.scrollY > 10;
-		});
+		};
+		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
 	});
-
-	function handleScroll() {
-		isScrolled = window.scrollY > 10;
-	}
 
 	// Tenant branding
 	const branding: TenantBranding | null = $derived(data?.tenant?.branding ?? null);
