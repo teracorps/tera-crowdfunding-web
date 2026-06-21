@@ -89,7 +89,8 @@
 			<button
 				class="px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all"
 				class:bg-[#1a73e8]!text-white={!selectedCategory}
-				class:bg-gray-100 text-gray-700={selectedCategory}
+				class:bg-gray-100={selectedCategory}
+				class:text-gray-700={selectedCategory}
 				class:hover:bg-gray-200={selectedCategory}
 				onclick={() => selectCategory('')}
 			>
@@ -99,7 +100,8 @@
 				<button
 					class="px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all"
 					class:bg-[#1a73e8]!text-white={selectedCategory === cat.slug}
-					class:bg-gray-100 text-gray-700={selectedCategory !== cat.slug}
+					class:bg-gray-100={selectedCategory !== cat.slug}
+					class:text-gray-700={selectedCategory !== cat.slug}
 					class:hover:bg-gray-200={selectedCategory !== cat.slug}
 					onclick={() => selectCategory(cat.slug)}
 				>
