@@ -10,7 +10,10 @@
 	const year = new Date().getFullYear();
 	const platformName = branding?.platformName ?? 'Terabisa';
 	const initial = platformName.charAt(0).toUpperCase();
-	const primaryColor = branding?.primaryColor ?? '#1a73e8';
+	const primaryColor = branding?.primaryColor ?? '#14B88C';
+	const logoUrl = branding?.logoUrl ?? null;
+	const logoTextUrl = branding?.logoTextUrl ?? null;
+	const logoMode = branding?.logoMode ?? 'icon-text';
 	const footerText = branding?.footerText ?? null;
 	const socialLinks = branding?.socialLinks ?? [];
 	const footerLinks = branding?.footerLinks ?? [];
@@ -22,17 +25,29 @@
 			<!-- Brand -->
 			<div class="md:col-span-1">
 				<div class="flex items-center gap-2 mb-4">
-					{#if branding?.logoUrl}
-						<img src={branding.logoUrl} alt={platformName} class="h-8 w-auto" />
+					{#if logoMode === 'logo-text'}
+						{#if logoTextUrl}
+							<img src={logoTextUrl} alt={platformName} class="h-10 w-auto max-w-[200px] object-contain" />
+						{:else if logoUrl}
+							<img src={logoUrl} alt={platformName} class="h-10 w-auto max-w-[200px] object-contain" />
+						{:else}
+							<span class="font-bold text-xl text-white">{platformName}</span>
+						{/if}
+					{:else if logoMode === 'icon-text'}
+						{#if logoUrl}
+							<img src={logoUrl} alt={platformName} class="h-8 w-auto" />
+						{:else}
+							<div
+								class="w-8 h-8 rounded-lg flex items-center justify-center"
+								style="background-color: {primaryColor};"
+							>
+								<span class="text-white font-bold text-sm">{initial}</span>
+							</div>
+						{/if}
+						<span class="font-bold text-xl text-white">{platformName}</span>
 					{:else}
-						<div
-							class="w-8 h-8 rounded-lg flex items-center justify-center"
-							style="background-color: {primaryColor};"
-						>
-							<span class="text-white font-bold text-sm">{initial}</span>
-						</div>
+						<span class="font-bold text-xl text-white">{platformName}</span>
 					{/if}
-					<span class="font-bold text-xl text-white">{platformName}</span>
 				</div>
 				<p class="text-gray-400 text-sm leading-relaxed mb-4">
 					{footerText || branding?.tagline || 'Platform crowdfunding terpercaya untuk galang dana, donasi online, dan saling membantu sesama.'}

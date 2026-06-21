@@ -93,10 +93,10 @@
 </svelte:head>
 
 <!-- Header -->
-<div class="bg-gradient-to-r from-[#1a73e8] to-[#1557b0]">
+<div class="bg-gradient-to-r from-primary to-primary-dark">
 	<div class="max-w-2xl mx-auto px-4 sm:px-6 py-8 text-center">
 		<h1 class="text-xl font-bold text-white">Buat Galang Dana</h1>
-		<p class="text-sm text-blue-200 mt-1">Mulai campaign kebaikanmu sekarang</p>
+		<p class="text-sm text-green-200 mt-1">Mulai campaign kebaikanmu sekarang</p>
 	</div>
 </div>
 
@@ -110,7 +110,7 @@
 					<div
 						class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors {step <=
 						currentStep
-							? 'bg-[#1a73e8] text-white'
+							? 'bg-primary text-white'
 							: 'bg-gray-100 text-gray-400'}"
 					>
 						{#if step < currentStep}
@@ -121,11 +121,11 @@
 							{step}
 						{/if}
 					</div>
-					<span class="text-xs font-medium {step <= currentStep ? 'text-[#1a73e8]' : 'text-gray-400'} hidden sm:inline">
+					<span class="text-xs font-medium {step <= currentStep ? 'text-primary' : 'text-gray-400'} hidden sm:inline">
 						{step === 1 ? 'Informasi' : step === 2 ? 'Cerita' : 'Data Diri'}
 					</span>
 					{#if step < totalSteps}
-						<div class="w-8 h-0.5 {step < currentStep ? 'bg-[#1a73e8]' : 'bg-gray-200'}"></div>
+						<div class="w-8 h-0.5 {step < currentStep ? 'bg-primary' : 'bg-gray-200'}"></div>
 					{/if}
 				</div>
 			{/each}
@@ -142,7 +142,7 @@
 							type="text"
 							bind:value={formData.title}
 							placeholder="Misal: Bantu Biaya Operasi Balita"
-							class="w-full px-4 py-3 border {errors.title ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20 focus:border-[#1a73e8] transition-colors"
+							class="w-full px-4 py-3 border {errors.title ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
 						/>
 						{#if errors.title}
 							<p class="text-xs text-red-500 mt-1">{errors.title}</p>
@@ -153,7 +153,7 @@
 						<label class="block text-sm font-medium text-gray-700 mb-1.5">Kategori</label>
 						<select
 							bind:value={formData.category}
-							class="w-full px-4 py-3 border {errors.category ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20 focus:border-[#1a73e8] transition-colors bg-white appearance-none"
+							class="w-full px-4 py-3 border {errors.category ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors bg-white appearance-none"
 						>
 							<option value="">Pilih kategori</option>
 							{#each categories as cat}
@@ -175,7 +175,7 @@
 									bind:value={formData.targetAmount}
 									placeholder="0"
 									min="10000"
-									class="w-full pl-10 pr-4 py-3 border {errors.targetAmount ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20 focus:border-[#1a73e8] transition-colors"
+									class="w-full pl-10 pr-4 py-3 border {errors.targetAmount ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
 								/>
 							</div>
 							{#if errors.targetAmount}
@@ -187,7 +187,7 @@
 							<input
 								type="date"
 								bind:value={formData.endDate}
-								class="w-full px-4 py-3 border {errors.endDate ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20 focus:border-[#1a73e8] transition-colors"
+								class="w-full px-4 py-3 border {errors.endDate ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
 							/>
 							{#if errors.endDate}
 								<p class="text-xs text-red-500 mt-1">{errors.endDate}</p>
@@ -202,7 +202,7 @@
 					<div>
 						<label class="block text-sm font-medium text-gray-700 mb-1.5">Foto Sampul</label>
 						<div
-							class="border-2 border-dashed {errors.coverImage ? 'border-red-300' : 'border-gray-200'} rounded-xl p-6 text-center hover:border-[#1a73e8] transition-colors cursor-pointer"
+							class="border-2 border-dashed {errors.coverImage ? 'border-red-300' : 'border-gray-200'} rounded-xl p-6 text-center hover:border-primary transition-colors cursor-pointer"
 							onclick={() => document.getElementById('cover-upload')?.click()}
 							role="button"
 							tabindex="0"
@@ -237,7 +237,7 @@
 							bind:value={formData.story}
 							rows="8"
 							placeholder="Ceritakan tujuan campaignmu, siapa yang akan dibantu, dan mengapa mereka membutuhkan bantuan..."
-							class="w-full px-4 py-3 border {errors.story ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20 focus:border-[#1a73e8] transition-colors resize-y"
+							class="w-full px-4 py-3 border {errors.story ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors resize-y"
 						></textarea>
 						{#if errors.story}
 							<p class="text-xs text-red-500 mt-1">{errors.story}</p>
@@ -255,7 +255,7 @@
 							type="text"
 							bind:value={formData.beneficiaryName}
 							placeholder="Nama orang yang akan dibantu"
-							class="w-full px-4 py-3 border {errors.beneficiaryName ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20 focus:border-[#1a73e8] transition-colors"
+							class="w-full px-4 py-3 border {errors.beneficiaryName ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
 						/>
 						{#if errors.beneficiaryName}
 							<p class="text-xs text-red-500 mt-1">{errors.beneficiaryName}</p>
@@ -266,7 +266,7 @@
 						<label class="block text-sm font-medium text-gray-700 mb-1.5">Hubungan dengan Penerima</label>
 						<select
 							bind:value={formData.beneficiaryRelation}
-							class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20 focus:border-[#1a73e8] transition-colors bg-white"
+							class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors bg-white"
 						>
 							<option value="">Pilih hubungan</option>
 							<option value="diri-sendiri">Diri Sendiri</option>
@@ -284,7 +284,7 @@
 								type="tel"
 								bind:value={formData.phone}
 								placeholder="08xxxx"
-								class="w-full px-4 py-3 border {errors.phone ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20 focus:border-[#1a73e8] transition-colors"
+								class="w-full px-4 py-3 border {errors.phone ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
 							/>
 							{#if errors.phone}
 								<p class="text-xs text-red-500 mt-1">{errors.phone}</p>
@@ -296,7 +296,7 @@
 								type="email"
 								bind:value={formData.email}
 								placeholder="email@contoh.com"
-								class="w-full px-4 py-3 border {errors.email ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20 focus:border-[#1a73e8] transition-colors"
+								class="w-full px-4 py-3 border {errors.email ? 'border-red-300' : 'border-gray-200'} rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
 							/>
 							{#if errors.email}
 								<p class="text-xs text-red-500 mt-1">{errors.email}</p>
@@ -322,7 +322,7 @@
 
 				<button
 					type="submit"
-					class="px-8 py-2.5 text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] rounded-full shadow-sm transition-colors"
+					class="px-8 py-2.5 text-sm font-semibold text-white bg-primary hover:bg-primary-dark rounded-full shadow-sm transition-colors"
 				>
 					{currentStep === totalSteps ? 'Ajukan Campaign' : 'Lanjut →'}
 				</button>

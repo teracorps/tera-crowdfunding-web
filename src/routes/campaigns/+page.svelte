@@ -88,7 +88,7 @@
 		<div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
 			<button
 				class="px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all"
-				class:bg-[#1a73e8]!text-white={!selectedCategory}
+				class:bg-primary!text-white={!selectedCategory}
 				class:bg-gray-100={selectedCategory}
 				class:text-gray-700={selectedCategory}
 				class:hover:bg-gray-200={selectedCategory}
@@ -99,7 +99,7 @@
 			{#each categories as cat}
 				<button
 					class="px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all"
-					class:bg-[#1a73e8]!text-white={selectedCategory === cat.slug}
+					class:bg-primary!text-white={selectedCategory === cat.slug}
 					class:bg-gray-100={selectedCategory !== cat.slug}
 					class:text-gray-700={selectedCategory !== cat.slug}
 					class:hover:bg-gray-200={selectedCategory !== cat.slug}
@@ -120,7 +120,7 @@
 			{total} campaign ditemukan
 		</p>
 		<select
-			class="text-sm border border-gray-200 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#1a73e8] bg-white"
+			class="text-sm border border-gray-200 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-primary bg-white"
 			bind:value={sortBy}
 			onchange={loadCampaigns}
 		>
@@ -134,7 +134,7 @@
 	<!-- Loading -->
 	{#if loading}
 		<div class="flex justify-center py-16">
-			<div class="w-10 h-10 border-3 border-gray-200 border-t-[#1a73e8] rounded-full animate-spin"></div>
+			<div class="w-10 h-10 border-3 border-gray-200 border-t-primary rounded-full animate-spin"></div>
 		</div>
 	{:else if campaigns.length === 0}
 		<div class="text-center py-16">
@@ -167,7 +167,7 @@
 				{#each Array.from({ length: totalPages }, (_, i) => i + 1) as p}
 					<button
 						class="w-10 h-10 rounded-lg text-sm font-medium transition-colors"
-						class:bg-[#1a73e8]!text-white={p === currentPage}
+						class:bg-primary!text-white={p === currentPage}
 						class:hover:bg-gray-100={p !== currentPage}
 						class:text-gray-700={p !== currentPage}
 						onclick={() => { currentPage = p; loadCampaigns(); }}

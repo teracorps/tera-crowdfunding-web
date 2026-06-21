@@ -30,7 +30,7 @@
 				{/if}
 			</div>
 			{#if seeAllLink && campaigns.length > 0}
-				<a href={seeAllLink} class="text-sm font-semibold text-[#1a73e8] hover:text-[#1557b0] transition-colors">
+				<a href={seeAllLink} class="text-sm font-semibold text-primary hover:text-primary-dark transition-colors">
 					Lihat semua →
 				</a>
 			{/if}

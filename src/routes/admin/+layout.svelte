@@ -28,13 +28,13 @@
 {#if !session}
 	<div class="flex items-center justify-center min-h-[60vh]">
 		<div class="text-center">
-			<div class="w-8 h-8 border-2 border-[#1a73e8] border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+			<div class="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
 			<p class="text-sm text-gray-500">Mengalihkan ke halaman masuk...</p>
 		</div>
 	</div>
 {:else}
 	<!-- Admin Header -->
-	<div class="bg-[#1a1a2e] text-white">
+	<div class="bg-text-primary text-white">
 		<div class="max-w-6xl mx-auto px-4 sm:px-6 py-6">
 			<div class="flex items-center justify-between">
 				<div>

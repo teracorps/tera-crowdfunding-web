@@ -128,7 +128,7 @@
 
 {#if loading}
 	<div class="flex items-center justify-center min-h-screen">
-		<div class="w-10 h-10 border-3 border-gray-200 border-t-[#1a73e8] rounded-full animate-spin"></div>
+		<div class="w-10 h-10 border-3 border-gray-200 border-t-primary rounded-full animate-spin"></div>
 	</div>
 {:else if error}
 	<div class="min-h-screen flex items-center justify-center px-4">
@@ -151,7 +151,7 @@
 				class="w-full h-full object-cover"
 			/>
 		{:else}
-			<div class="w-full h-full bg-gradient-to-br from-[#1a73e8] to-[#0d47a1]"></div>
+			<div class="w-full h-full bg-gradient-to-br from-primary to-[#0d47a1]"></div>
 		{/if}
 		<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
@@ -184,7 +184,7 @@
 							</div>
 						{/if}
 						<span class="text-sm font-medium text-gray-700">{campaign.organizer_name}</span>
-						<svg class="w-4 h-4 text-[#1a73e8]" viewBox="0 0 20 20" fill="currentColor">
+						<svg class="w-4 h-4 text-primary" viewBox="0 0 20 20" fill="currentColor">
 							<path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0c.552.41 1.184.648 1.745.723a3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812z" clip-rule="evenodd"/>
 						</svg>
 					</div>
@@ -204,7 +204,7 @@
 						<h2 class="text-lg font-bold text-gray-900 mb-4">Update Terbaru</h2>
 						<div class="space-y-4">
 							{#each campaign.updates as update}
-								<div class="border-l-3 border-[#1a73e8] pl-4">
+								<div class="border-l-3 border-primary pl-4">
 									<p class="text-xs text-gray-500 mb-1">
 										{new Date(update.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
 									</p>
@@ -243,12 +243,12 @@
 					</div>
 
 					<!-- Donate Button -->
-					<button
-						class="donate-btn w-full !text-base !py-3"
-						onclick={() => (showDonate = true)}
+					<a
+						href="/campaign/{campaign.slug}/donasi"
+						class="donate-btn w-full !text-base !py-3 block text-center"
 					>
 						❤️ Donasi Sekarang
-					</button>
+					</a>
 
 					<!-- Share -->
 					<div class="flex gap-2">
@@ -294,9 +294,9 @@
 						{#each presetAmounts as amount}
 							<button
 								class="px-3 py-2.5 rounded-lg border-2 text-sm font-semibold transition-all"
-								class:border-[#1a73e8]={donateForm.amount === amount}
-								class:bg-[#e8f0fe]={donateForm.amount === amount}
-								class:text-[#1a73e8]={donateForm.amount === amount}
+								class:border-primary={donateForm.amount === amount}
+								class:bg-primary-light={donateForm.amount === amount}
+								class:text-primary={donateForm.amount === amount}
 								class:border-gray-200={donateForm.amount !== amount}
 								class:text-gray-700={donateForm.amount !== amount}
 								onclick={() => selectAmount(amount)}
@@ -308,7 +308,7 @@
 					<input
 						type="number"
 						placeholder="Atau masukkan nominal"
-						class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]"
+						class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
 						bind:value={donateForm.amount}
 						min="1000"
 						step="1000"
@@ -322,7 +322,7 @@
 						<input
 							type="text"
 							placeholder="Masukkan nama kamu"
-							class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]"
+							class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
 							bind:value={donateForm.name}
 						/>
 					</div>
@@ -331,7 +331,7 @@
 						<input
 							type="email"
 							placeholder="Masukkan email kamu"
-							class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]"
+							class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
 							bind:value={donateForm.email}
 						/>
 					</div>
@@ -340,7 +340,7 @@
 						<input
 							type="tel"
 							placeholder="08xxxxxxxxxx"
-							class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]"
+							class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
 							bind:value={donateForm.phone}
 						/>
 					</div>
@@ -349,7 +349,7 @@
 						<textarea
 							placeholder="Tulis doa atau ucapan kamu..."
 							rows="3"
-							class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8] resize-none"
+							class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-none"
 							bind:value={donateForm.message}
 						></textarea>
 					</div>
@@ -357,7 +357,7 @@
 						<input
 							type="checkbox"
 							id="anonymous"
-							class="w-4 h-4 text-[#1a73e8] rounded"
+							class="w-4 h-4 text-primary rounded"
 							bind:checked={donateForm.is_anonymous}
 						/>
 						<label for="anonymous" class="text-sm text-gray-600">Sembunyikan nama saya (Anonim)</label>

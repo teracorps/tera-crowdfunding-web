@@ -44,26 +44,26 @@
 </svelte:head>
 
 <!-- Header -->
-<div class="bg-[#e8f0fe]">
-	<div class="max-w-2xl mx-auto px-4 sm:px-6 py-8 text-center">
+<div class="bg-primary-light">
+	<div class="max-w-2xl mx-auto px-4 sm:px-6 py-6 sm:py-10 text-center">
 		<h1 class="text-xl font-bold text-gray-900">Donasi Saya</h1>
 		<p class="text-sm text-gray-500 mt-1">Cek riwayat donasi kamu berdasarkan email</p>
 	</div>
 </div>
 
-<div class="max-w-2xl mx-auto px-4 sm:px-6 -mt-4 pb-8">
+<div class="max-w-2xl mx-auto px-4 sm:px-6 -mt-5 sm:-mt-6 pb-8">
 	<!-- Email Search -->
 	<div class="bg-white sm:rounded-2xl sm:shadow-sm sm:border sm:border-gray-100 p-4 sm:p-6 mb-4">
 		<div class="flex gap-3">
 			<input
 				type="email"
 				placeholder="Masukkan email kamu"
-				class="flex-1 px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]"
+				class="flex-1 px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary"
 				bind:value={email}
 				onkeydown={(e) => e.key === 'Enter' && loadHistory()}
 			/>
 			<button
-				class="px-6 py-2.5 text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] rounded-xl transition-colors disabled:opacity-50"
+				class="px-6 py-2.5 text-sm font-semibold text-white bg-primary hover:bg-primary-dark rounded-xl transition-colors disabled:opacity-50"
 				disabled={!email.trim() || loading}
 				onclick={loadHistory}
 			>
@@ -93,7 +93,7 @@
 				<div class="flex border-b border-gray-100">
 					<button
 						class="flex-1 py-3.5 text-sm font-medium text-center transition-colors {activeFilter === 'all'
-							? 'text-[#1a73e8] border-b-2 border-[#1a73e8]'
+							? 'text-primary border-b-2 border-primary'
 							: 'text-gray-500 hover:text-gray-700'}"
 						onclick={() => (activeFilter = 'all')}
 					>
@@ -101,7 +101,7 @@
 					</button>
 					<button
 						class="flex-1 py-3.5 text-sm font-medium text-center transition-colors {activeFilter === 'settlement'
-							? 'text-[#1a73e8] border-b-2 border-[#1a73e8]'
+							? 'text-primary border-b-2 border-primary'
 							: 'text-gray-500 hover:text-gray-700'}"
 						onclick={() => (activeFilter = 'settlement')}
 					>
@@ -109,7 +109,7 @@
 					</button>
 					<button
 						class="flex-1 py-3.5 text-sm font-medium text-center transition-colors {activeFilter === 'pending'
-							? 'text-[#1a73e8] border-b-2 border-[#1a73e8]'
+							? 'text-primary border-b-2 border-primary'
 							: 'text-gray-500 hover:text-gray-700'}"
 						onclick={() => (activeFilter = 'pending')}
 					>
@@ -141,7 +141,7 @@
 									{donation.campaign?.title || 'Campaign tidak tersedia'}
 								</p>
 								<div class="flex items-center gap-2 mt-1">
-									<span class="text-sm font-semibold text-[#14B88C]">{formatRupiah(donation.amount)}</span>
+									<span class="text-sm font-semibold text-primary">{formatRupiah(donation.amount)}</span>
 									<span class="text-xs text-gray-400">•</span>
 									<span class="text-xs text-gray-400">{donation.date}</span>
 								</div>

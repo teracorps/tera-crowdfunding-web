@@ -38,12 +38,12 @@
 				<button
 					onclick={() => onselect?.(cat.slug)}
 					class="flex flex-col items-center gap-2 min-w-[90px] p-3 rounded-xl transition-all duration-200 cursor-pointer"
-					class:bg-[#e8f0fe]={selected === cat.slug}
+					class:bg-primary-light={selected === cat.slug}
 					class:hover:bg-gray-50={selected !== cat.slug}
 				>
 					<div
 						class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl transition-all"
-						class:bg-[#1a73e8]={selected === cat.slug}
+						class:bg-primary={selected === cat.slug}
 						class:bg-gray-100={selected !== cat.slug}
 						class:shadow-md={selected === cat.slug}
 					>
@@ -51,7 +51,7 @@
 					</div>
 					<span
 						class="text-xs font-medium text-center leading-tight"
-						class:text-[#1a73e8]={selected === cat.slug}
+						class:text-primary={selected === cat.slug}
 						class:text-gray-600={selected !== cat.slug}
 					>
 						{cat.name}

@@ -1,42 +1,42 @@
-# sv
+# Terabisa — Crowdfunding Web Platform
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Multi-tenant platform crowdfunding dengan config-driven theming, integrasi Midtrans, dan deployment Cloudflare Pages.
 
-## Creating a project
+## Tech Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **SvelteKit 5** — Runes (`$state`, `$derived`, `$props`), `{@render children()}`
+- **Tailwind CSS v4** — `@theme` directive via Vite plugin
+- **Midtrans Snap** — Payment gateway (BCA, Mandiri, GoPay, OVO, DANA, ShopeePay)
+- **Supabase** — Auth, database, realtime
+- **Cloudflare Pages** — Hosting & CDN
 
-```sh
-# create a new project
-npx sv create my-app
-```
+## Quick Start
 
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-pnpm dlx sv@0.16.1 create --template minimal --types ts --add tailwindcss="plugins:none" prettier --install pnpm tera-crowdfunding-web
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+```bash
+pnpm install
+cp .env.example .env   # fill in Supabase + Midtrans keys
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## Build & Deploy
 
-To create a production version of your app:
-
-```sh
+```bash
 npm run build
+npx wrangler pages deploy .svelte-kit/cloudflare --project-name tera-crowdfunding-web
 ```
 
-You can preview the production build with `npm run preview`.
+Production: `https://tera-crowdfunding-web.pages.dev`
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Documentation
+
+See [docs/README.md](docs/README.md) for full documentation:
+
+| Doc | Description |
+| --- | ----------- |
+| [Product Overview](docs/01-product/README.md) | Vision, features, status |
+| [Donation Flow](docs/01-product/features/donation.md) | Payment, Midtrans, invoice |
+| [Theme System](docs/01-product/features/theme-system.md) | Config-driven branding |
+| [Multi-Tenant](docs/01-product/features/multi-tenant.md) | Subdomain routing |
+| [Architecture](docs/02-engineering/architecture.md) | System overview |
+| [Deployment](docs/02-engineering/deployment.md) | Build, env vars, deploy |
+| [Roadmap](docs/03-roadmap/README.md) | Progress, missing, future plans |

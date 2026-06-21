@@ -99,9 +99,9 @@
 		<!-- Section Header -->
 		<div class="flex items-center justify-between mb-6">
 			<h2 class="text-xl md:text-2xl font-bold text-gray-900">
-				Doa-doa <span class="text-[#1a73e8]">#OrangBaik</span>
+				Doa-doa <span class="text-primary">#OrangBaik</span>
 			</h2>
-			<a href="/doa" class="text-sm font-semibold text-[#1a73e8] hover:text-[#1557b0] transition-colors">
+			<a href="/doa" class="text-sm font-semibold text-primary hover:text-primary-dark transition-colors">
 				Lihat semua →
 			</a>
 		</div>
@@ -145,7 +145,7 @@
 						<!-- Campaign link -->
 						<a
 							href={prayer.campaignSlug}
-							class="block text-xs text-[#1a73e8] font-medium truncate mb-2 hover:underline"
+							class="block text-xs text-primary font-medium truncate mb-2 hover:underline"
 						>
 							{prayer.campaignTitle}
 						</a>

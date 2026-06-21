@@ -51,7 +51,7 @@
 						<span
 							class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider {item.badgeStyle ===
 							'primary'
-								? 'bg-blue-100 text-[#1a73e8]'
+								? 'bg-blue-100 text-primary'
 								: 'bg-gray-100 text-gray-600'}"
 						>
 							{item.badge}
@@ -66,7 +66,7 @@
 			<!-- Value / Arrow -->
 			<div class="flex items-center gap-1.5">
 				{#if item.badge && !isNaN(Number(item.badge?.replace(/[^0-9]/g, '')))}
-					<span class="text-sm font-semibold text-[#1a73e8]">{item.badge}</span>
+					<span class="text-sm font-semibold text-primary">{item.badge}</span>
 				{/if}
 				<svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>

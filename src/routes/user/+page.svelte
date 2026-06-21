@@ -24,7 +24,7 @@
 </svelte:head>
 
 <!-- Header Banner -->
-<div class="bg-[#e8f0fe]">
+<div class="bg-primary-light">
 	<div class="max-w-2xl mx-auto px-4 sm:px-6 py-8 text-center">
 		<h1 class="text-xl font-bold text-gray-900">Akun</h1>
 	</div>
@@ -35,14 +35,14 @@
 		{#if user}
 			<!-- LOGGED IN: Profile -->
 			<div class="px-4 sm:px-6 py-6 sm:py-8 text-center border-b border-gray-100">
-				<div class="w-20 h-20 rounded-full bg-gradient-to-br from-[#1a73e8] to-[#1557b0] flex items-center justify-center mx-auto mb-3 shadow-sm">
+				<div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center mx-auto mb-3 shadow-sm">
 					<span class="text-3xl font-bold text-white">
 						{userMeta.full_name?.charAt(0)?.toUpperCase() || user.email?.charAt(0)?.toUpperCase() || 'A'}
 					</span>
 				</div>
 				<h2 class="text-lg font-semibold text-gray-900">{userMeta.full_name || user.email}</h2>
 				<p class="text-xs text-gray-400 mt-0.5">{user.email}</p>
-				<button class="mt-2 px-5 py-1.5 text-sm font-semibold text-[#1a73e8] border border-[#1a73e8] rounded-full hover:bg-blue-50 transition-colors">
+				<button class="mt-2 px-5 py-1.5 text-sm font-semibold text-primary border border-primary rounded-full hover:bg-green-50 transition-colors">
 					Edit Profile
 				</button>
 			</div>
@@ -129,12 +129,12 @@
 				</p>
 				<button
 					onclick={handleLogin}
-					class="inline-block px-8 py-2.5 text-sm font-semibold text-[#1a73e8] border-2 border-[#1a73e8] rounded-full hover:bg-blue-50 transition-colors"
+					class="inline-block px-8 py-2.5 text-sm font-semibold text-primary border-2 border-primary rounded-full hover:bg-green-50 transition-colors"
 				>
 					Masuk sekarang
 				</button>
 				<p class="text-xs text-gray-400 mt-3">
-					Belum punya akun? <a href="/auth/daftar" class="text-[#1a73e8] font-semibold hover:underline">Daftar</a>
+					Belum punya akun? <a href="/auth/daftar" class="text-primary font-semibold hover:underline">Daftar</a>
 				</p>
 			</div>
 

@@ -48,8 +48,8 @@
 	]);
 
 	const typeIcons: Record<string, string> = {
-		donation: `<svg class="w-5 h-5 text-[#14B88C]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
-		update: `<svg class="w-5 h-5 text-[#1a73e8]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>`,
+		donation: `<svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+		update: `<svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>`,
 		reminder: `<svg class="w-5 h-5 text-[#FF784B]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>`,
 		system: `<svg class="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
 	};
@@ -70,7 +70,7 @@
 </svelte:head>
 
 <!-- Header -->
-<div class="bg-[#e8f0fe]">
+<div class="bg-primary-light">
 	<div class="max-w-2xl mx-auto px-4 sm:px-6 py-8 text-center">
 		<h1 class="text-xl font-bold text-gray-900">Inbox</h1>
 		{#if unreadCount > 0}
@@ -87,7 +87,7 @@
 			{#if unreadCount > 0}
 				<button
 					onclick={markAllRead}
-					class="text-xs font-semibold text-[#1a73e8] hover:text-[#1557b0] transition-colors"
+					class="text-xs font-semibold text-primary hover:text-primary-dark transition-colors"
 				>
 					Tandai sudah dibaca
 				</button>
@@ -114,7 +114,7 @@
 						<div class="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center flex-shrink-0 relative">
 							{@html typeIcons[item.type] || typeIcons.system}
 							{#if !item.isRead}
-								<span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-[#1a73e8] rounded-full border-2 border-white"></span>
+								<span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-primary rounded-full border-2 border-white"></span>
 							{/if}
 						</div>
 

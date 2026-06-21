@@ -17,6 +17,8 @@
 	// Resolve branding
 	const platformName = $derived(branding?.platformName ?? 'Terabisa');
 	const logoUrl = $derived(branding?.logoUrl ?? null);
+	const logoTextUrl = $derived(branding?.logoTextUrl ?? null);
+	const logoMode = $derived(branding?.logoMode ?? 'icon-text');
 	const initial = $derived(platformName.charAt(0).toUpperCase());
 	const primaryColor = $derived(branding?.primaryColor ?? '#14B88C');
 
@@ -39,26 +41,51 @@
 >
 	<div class="max-w-7xl mx-auto px-4 sm:px-6">
 		<div class="flex items-center justify-between h-16">
-			<!-- Logo -->
+		<!-- Logo -->
 			<a href="/" class="flex items-center gap-2">
-				{#if logoUrl}
-					<img src={logoUrl} alt={platformName} class="h-8 w-auto" />
-				{:else}
-					<div
-						class="w-8 h-8 rounded-lg flex items-center justify-center"
-						style="background-color: {primaryColor};"
+				{#if logoMode === 'logo-text'}
+					{#if logoTextUrl}
+						<img src={logoTextUrl} alt={platformName} class="h-9 w-auto max-w-[180px] sm:max-w-[220px] object-contain" />
+					{:else if logoUrl}
+						<img src={logoUrl} alt={platformName} class="h-9 w-auto max-w-[180px] sm:max-w-[220px] object-contain" />
+					{:else}
+						<span
+							class="font-bold text-xl"
+							style="color: {useSolid
+								? 'var(--color-text-primary, #111827)'
+								: '#ffffff'};"
+						>{platformName}</span>
+					{/if}
+				{:else if logoMode === 'icon-text'}
+					{#if logoUrl}
+						<img src={logoUrl} alt={platformName} class="h-8 w-auto" />
+					{:else}
+						<div
+							class="w-8 h-8 rounded-lg flex items-center justify-center"
+							style="background-color: {primaryColor};"
+						>
+							<span class="text-white font-bold text-sm">{initial}</span>
+						</div>
+					{/if}
+					<span
+						class="font-bold text-xl transition-colors hidden sm:inline"
+						style="color: {useSolid
+							? 'var(--color-text-primary, #111827)'
+							: '#ffffff'};"
 					>
-						<span class="text-white font-bold text-sm">{initial}</span>
-					</div>
+						{platformName}
+					</span>
+				{:else}
+					<!-- text-only -->
+					<span
+						class="font-bold text-xl"
+						style="color: {useSolid
+							? 'var(--color-text-primary, #111827)'
+							: '#ffffff'};"
+					>
+						{platformName}
+					</span>
 				{/if}
-			<span
-				class="font-bold text-xl transition-colors hidden sm:inline"
-				style="color: {useSolid
-					? 'var(--color-text-primary, #111827)'
-					: '#ffffff'};"
-			>
-				{platformName}
-			</span>
 			</a>
 
 			<!-- Desktop Nav -->

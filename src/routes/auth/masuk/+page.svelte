@@ -52,8 +52,8 @@
 <div class="min-h-[80vh] flex items-center justify-center px-4 py-12">
 	<div class="w-full max-w-sm">
 		<div class="text-center mb-8">
-			<div class="w-14 h-14 rounded-full bg-[#e8f0fe] flex items-center justify-center mx-auto mb-4">
-				<svg class="w-7 h-7 text-[#1a73e8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+			<div class="w-14 h-14 rounded-full bg-primary-light flex items-center justify-center mx-auto mb-4">
+				<svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
 				</svg>
 			</div>
@@ -69,7 +69,7 @@
 					bind:value={email}
 					placeholder="email@contoh.com"
 					required
-					class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20 focus:border-[#1a73e8] transition-colors"
+					class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
 				/>
 			</div>
 
@@ -80,7 +80,7 @@
 					bind:value={password}
 					placeholder="••••••••"
 					required
-					class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20 focus:border-[#1a73e8] transition-colors"
+					class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
 				/>
 			</div>
 
@@ -93,19 +93,19 @@
 			<button
 				type="submit"
 				disabled={loading}
-				class="w-full py-3 text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] rounded-xl transition-colors disabled:opacity-50"
+				class="w-full py-3 text-sm font-semibold text-white bg-primary hover:bg-primary-dark rounded-xl transition-colors disabled:opacity-50"
 			>
 				{loading ? 'Memproses...' : 'Masuk'}
 			</button>
 		</form>
 
 		<div class="mt-6 text-center text-sm text-gray-500">
-			<a href="/auth/lupa-password" class="text-[#1a73e8] font-medium hover:underline">Lupa password?</a>
+			<a href="/auth/lupa-password" class="text-primary font-medium hover:underline">Lupa password?</a>
 		</div>
 
 		<p class="mt-6 text-center text-sm text-gray-500">
 			Belum punya akun?
-			<a href="/auth/daftar" class="text-[#1a73e8] font-semibold hover:underline">Daftar</a>
+			<a href="/auth/daftar" class="text-primary font-semibold hover:underline">Daftar</a>
 		</p>
 	</div>
 </div>

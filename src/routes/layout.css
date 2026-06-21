@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-:root {
+@theme {
 	--color-primary: #14B88C;
 	--color-primary-dark: #0F9A75;
 	--color-primary-light: #e8f0fe;
@@ -14,6 +14,9 @@
 	--color-text-secondary: #64748b;
 	--color-text-muted: #94a3b8;
 	--color-surface: #ffffff;
+}
+
+:root {
 	--font-family: 'Inter', system-ui, -apple-system, sans-serif;
 	--font-heading: 'Inter', system-ui, -apple-system, sans-serif;
 }

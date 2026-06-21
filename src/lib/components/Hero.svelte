@@ -26,7 +26,7 @@
 
 				<h1 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-4">
 					Galang Dana & Donasi <br/>
-					<span class="text-[#ffd166]">Online</span>
+					<span class="text-accent">Online</span>
 				</h1>
 				<p class="text-white/80 text-base md:text-lg mb-8 max-w-lg mx-auto md:mx-0">
 					Platform crowdfunding terpercaya untuk galang dana, donasi online, 
@@ -37,13 +37,13 @@
 				<div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
 					<a
 						href="/campaigns"
-						class="px-8 py-3 bg-white text-[#1a73e8] font-semibold rounded-full text-sm hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
+						class="px-8 py-3 bg-white text-primary font-semibold rounded-full text-sm hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
 					>
 						Mulai Donasi
 					</a>
 					<a
 						href="/galang-dana"
-						class="px-8 py-3 bg-[#ff7043] text-white font-semibold rounded-full text-sm hover:bg-[#f4511e] transition-all shadow-lg hover:shadow-xl"
+						class="px-8 py-3 bg-secondary text-white font-semibold rounded-full text-sm hover:bg-[#e0663a] transition-all shadow-lg hover:shadow-xl"
 					>
 						Galang Dana
 					</a>
@@ -89,7 +89,7 @@
 						</div>
 						<div class="text-white/60 text-xs mt-2">78% dari target</div>
 					</div>
-					<div class="absolute bottom-10 left-0 w-40 h-32 bg-[#ff7043]/20 rounded-2xl backdrop-blur border border-white/20 p-3">
+					<div class="absolute bottom-10 left-0 w-40 h-32 bg-secondary/20 rounded-2xl backdrop-blur border border-white/20 p-3">
 						<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
 						<div class="text-white text-xs mt-2">1.234 Donatur</div>
 					</div>

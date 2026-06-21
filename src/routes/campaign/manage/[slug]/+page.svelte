@@ -119,11 +119,11 @@
 </svelte:head>
 
 <!-- Header -->
-<div class="bg-gradient-to-r from-[#1a73e8] to-[#1557b0]">
+<div class="bg-gradient-to-r from-primary to-primary-dark">
 	<div class="max-w-6xl mx-auto px-4 sm:px-6 py-6">
 		<div class="flex items-center justify-between flex-wrap gap-4">
 			<div>
-				<a href="/" class="text-blue-200 text-sm hover:text-white transition-colors">&larr; Dashboard</a>
+				<a href="/" class="text-green-200 text-sm hover:text-white transition-colors">&larr; Dashboard</a>
 				<h1 class="text-xl sm:text-2xl font-bold text-white mt-1">{campaign.title}</h1>
 				<div class="flex items-center gap-2 mt-1">
 					<span
@@ -189,12 +189,12 @@
 	<div class="bg-white rounded-xl p-4 sm:p-5 border border-gray-100 shadow-sm">
 		<div class="flex items-center justify-between mb-2">
 			<span class="text-sm font-medium text-gray-700">Progress Penggalangan Dana</span>
-			<span class="text-sm font-semibold text-[#1a73e8]">{percentage}%</span>
+			<span class="text-sm font-semibold text-primary">{percentage}%</span>
 		</div>
 		<div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
 			<div
 				class="h-full rounded-full transition-all duration-500"
-				class:bg-[#1a73e8]={percentage < 100}
+				class:bg-primary={percentage < 100}
 				class:bg-green-500={percentage >= 100}
 				style="width: {Math.min(percentage, 100)}%"
 			></div>
@@ -219,13 +219,13 @@
 							type="text"
 							placeholder="Cari donatur..."
 							bind:value={searchQuery}
-							class="w-full sm:w-48 pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20 focus:border-[#1a73e8]"
+							class="w-full sm:w-48 pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
 						/>
 					</div>
 					<!-- Filter -->
 					<select
 						bind:value={filterStatus}
-						class="px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/20 focus:border-[#1a73e8]"
+						class="px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
 					>
 						<option value="all">Semua Status</option>
 						<option value="paid">Berhasil</option>

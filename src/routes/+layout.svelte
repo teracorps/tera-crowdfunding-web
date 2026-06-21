@@ -1,5 +1,6 @@
 <script lang="ts">
 	import './layout.css';
+	import { page } from '$app/state';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import BottomNav from '$lib/components/BottomNav.svelte';
 	import Footer from '$lib/components/Footer.svelte';
@@ -34,6 +35,11 @@
 				'--font-heading': branding.fontHeading,
 		  }
 		: {});
+
+	// Pages with full-screen layout (no navbar/footer/bottomnav)
+	const isFullScreenLayout = $derived(
+		page.url.pathname.includes('/donasi')
+	);
 </script>
 
 <svelte:head>
@@ -50,7 +56,7 @@
 		<meta name="twitter:image" content={branding.ogImageUrl} />
 	{/if}
 	<link rel="manifest" href="/manifest.json" />
-	<meta name="theme-color" content="#1a73e8" />
+	<meta name="theme-color" content="#14B88C" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 	<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-your_client_key_here"></script>
@@ -62,19 +68,24 @@
 		.map(([k, v]) => `${k}: ${v};`)
 		.join(' ')}
 >
-	<Navbar
-		{isScrolled}
-		user={data?.session?.user ?? null}
-		branding={data?.tenant?.branding ?? null}
-	/>
-
-	<main class="min-h-screen pb-16 md:pb-0">
+	{#if isFullScreenLayout}
+		<!-- Full-screen page: no navbar/footer/bottomnav — page handles its own layout -->
 		{@render children()}
-	</main>
+	{:else}
+		<Navbar
+			{isScrolled}
+			user={data?.session?.user ?? null}
+			branding={data?.tenant?.branding ?? null}
+		/>
 
-	<div class="hidden md:block">
-		<Footer branding={data?.tenant?.branding ?? null} />
-	</div>
+		<main class="min-h-screen pt-16 pb-16 md:pb-0">
+			{@render children()}
+		</main>
 
-	<BottomNav user={data?.session?.user ?? null} />
+		<div class="hidden md:block">
+			<Footer branding={data?.tenant?.branding ?? null} />
+		</div>
+
+		<BottomNav user={data?.session?.user ?? null} />
+	{/if}
 </div>

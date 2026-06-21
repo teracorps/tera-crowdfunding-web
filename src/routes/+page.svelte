@@ -105,8 +105,8 @@
 		<div class="grid md:grid-cols-3 gap-8">
 			<!-- Step 1 -->
 			<div class="flex flex-col items-center">
-				<div class="w-16 h-16 rounded-2xl bg-[#e8f0fe] flex items-center justify-center mb-4">
-					<svg class="w-8 h-8 text-[#1a73e8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+				<div class="w-16 h-16 rounded-2xl bg-primary-light flex items-center justify-center mb-4">
+					<svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
 					</svg>
 				</div>
@@ -117,7 +117,7 @@
 			<!-- Step 2 -->
 			<div class="flex flex-col items-center">
 				<div class="w-16 h-16 rounded-2xl bg-[#fff0ea] flex items-center justify-center mb-4">
-					<svg class="w-8 h-8 text-[#ff7043]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<svg class="w-8 h-8 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
 					</svg>
 				</div>
@@ -128,7 +128,7 @@
 			<!-- Step 3 -->
 			<div class="flex flex-col items-center">
 				<div class="w-16 h-16 rounded-2xl bg-[#e8faf4] flex items-center justify-center mb-4">
-					<svg class="w-8 h-8 text-[#14b88c]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<svg class="w-8 h-8 text--primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
 					</svg>
 				</div>

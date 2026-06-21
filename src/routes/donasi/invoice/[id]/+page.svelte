@@ -38,7 +38,7 @@
 	{#if loading}
 		<div class="max-w-lg mx-auto px-4 py-12 text-center">
 			<div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-				<svg class="w-16 h-16 text-[#14B88C] mx-auto mb-4 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+				<svg class="w-16 h-16 text-primary mx-auto mb-4 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
 					<path d="M6 9V2h12v7"/>
 					<path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
 					<path d="M6 14h12v8H6z"/>
@@ -55,7 +55,7 @@
 				</svg>
 				<h1 class="text-lg font-bold text-gray-900 mb-2">Invoice Tidak Tersedia</h1>
 				<p class="text-sm text-gray-500 mb-4">{error}</p>
-				<a href="/user/donations" class="text-sm font-semibold text-[#1a73e8] hover:underline">Kembali ke Riwayat Donasi</a>
+				<a href="/user/donations" class="text-sm font-semibold text-primary hover:underline">Kembali ke Riwayat Donasi</a>
 			</div>
 		</div>
 	{:else}

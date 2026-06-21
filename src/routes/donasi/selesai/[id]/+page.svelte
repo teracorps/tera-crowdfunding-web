@@ -62,7 +62,7 @@
 	<div class="w-full max-w-md">
 		{#if status === 'loading'}
 			<div class="text-center py-12">
-				<div class="w-10 h-10 border-2 border-gray-200 border-t-[#1a73e8] rounded-full animate-spin mx-auto mb-4"></div>
+				<div class="w-10 h-10 border-2 border-gray-200 border-t-primary rounded-full animate-spin mx-auto mb-4"></div>
 				<p class="text-sm text-gray-500">Memeriksa status pembayaran...</p>
 			</div>
 		{:else}
@@ -116,7 +116,7 @@
 					{#if status === 'success'}
 						<a
 							href="/donasi/invoice/{donation.id}"
-							class="block w-full py-2.5 text-sm font-semibold text-white bg-[#14B88C] hover:bg-[#0F9A75] rounded-xl transition-colors text-center mb-3"
+							class="block w-full py-2.5 text-sm font-semibold text-white bg-primary hover:bg-primary-dark rounded-xl transition-colors text-center mb-3"
 						>
 							Download Invoice
 						</a>
@@ -128,14 +128,14 @@
 					{#if status === 'pending'}
 						<button
 							onclick={() => window.location.reload()}
-							class="w-full py-2.5 text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] rounded-xl transition-colors"
+							class="w-full py-2.5 text-sm font-semibold text-white bg-primary hover:bg-primary-dark rounded-xl transition-colors"
 						>
 							Cek Status Lagi
 						</button>
 					{/if}
 					<button
 						onclick={goToCampaign}
-						class="w-full py-2.5 text-sm font-semibold text-[#1a73e8] border border-[#1a73e8] hover:bg-blue-50 rounded-xl transition-colors"
+						class="w-full py-2.5 text-sm font-semibold text-primary border border-primary hover:bg-green-50 rounded-xl transition-colors"
 					>
 						Lihat Campaign
 					</button>

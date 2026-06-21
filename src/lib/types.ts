@@ -123,6 +123,8 @@ export interface TenantBranding {
 	backgroundColor: string;
 	surfaceColor: string;
 	logoUrl: string | null;
+	logoTextUrl: string | null;
+	logoMode: 'text-only' | 'icon-text' | 'logo-text';
 	faviconUrl: string | null;
 	ogImageUrl: string | null;
 	fontFamily: string;
