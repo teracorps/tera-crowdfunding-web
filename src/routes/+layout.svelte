@@ -1,6 +1,7 @@
 <script lang="ts">
 	import './layout.css';
 	import Navbar from '$lib/components/Navbar.svelte';
+	import BottomNav from '$lib/components/BottomNav.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import type { TenantBranding } from '$lib/types';
 
@@ -70,9 +71,13 @@
 		branding={data?.tenant?.branding ?? null}
 	/>
 
-	<main class="min-h-screen">
+	<main class="min-h-screen pb-16 md:pb-0">
 		{@render children()}
 	</main>
 
-	<Footer branding={data?.tenant?.branding ?? null} />
+	<div class="hidden md:block">
+		<Footer branding={data?.tenant?.branding ?? null} />
+	</div>
+
+	<BottomNav user={data?.session?.user ?? null} />
 </div>
